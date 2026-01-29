@@ -1,0 +1,35 @@
+Don't use backticks in commit messages. They are used here to denote code blocks.
+Use following commit template (backticks are not part of template, they are used to denote template start and finish):
+
+```
+<type>[optional scope][!]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+The commit <type> can include the following:
+
+feat – a new feature is introduced with the changes
+fix – a bug fix has occurred
+chore – changes that do not relate to a fix or feature and don't modify src or test files (for example updating dependencies)
+refactor – refactored code that neither fixes a bug nor adds a feature
+docs – updates to documentation such as a the README or other markdown files
+style – changes that do not affect the meaning of the code, likely related to code formatting such as white-space, missing semi-colons, and so on.
+test – including new or correcting previous tests
+perf – performance improvements
+ci – continuous integration related
+build – changes that affect the build system or external dependencies
+revert – reverts a previous commit
+
+The commit type subject line should be all lowercase with 80 characters limit to encourage succinct descriptions. 
+Do not end the subject line with a period
+Separate the subject from the body with a blank line
+Use the imperative mood in the subject line
+Breaking changes use `!` before `:` in the subject line. Example: "feat!: this is a breaking change"
+
+The optional commit body should be used to provide further detail that cannot fit within the character limitations of the subject line description.
+Use the body to explain what and why.
+Be direct, try to eliminate filler words and phrases in these sentences (examples: though, maybe, I think, kind of). Think like a journalist.
+Never ever include git diffs in the commit message.
