@@ -17,13 +17,17 @@ Automatically generates conventional commit messages based on your staged change
    git clone https://github.com/jakshi/aicommit.git
    ```
 
-2. Copy the script to your PATH:
+2. Install with just:
    ```bash
-   cp aicommit/aicommit ~/bin/
-   chmod +x ~/bin/aicommit
+   just install
    ```
 
 3. (Optional) Create a commit message template at `~/COMMITS.md` to customize the format. See [COMMITS.md.example](COMMITS.md.example) for a conventional commits template.
+
+4. (Optional) Override the default model (`openai/gpt-5.3-codex`):
+   ```bash
+   export AICOMMIT_MODEL="anthropic/claude-sonnet-4"
+   ```
 
 ## Usage
 
@@ -56,6 +60,8 @@ git add --all && aicommit && git push
 ## Customization
 
 Create `~/COMMITS.md` with your preferred commit message format and guidelines. The script will include this template in the prompt to the AI.
+
+The script uses `openai/gpt-5.3-codex` by default. To use a different model, set `AICOMMIT_MODEL`.
 
 Example for conventional commits - see [COMMITS.md.example](COMMITS.md.example).
 

@@ -20,6 +20,7 @@ for arg in "$@"; do
 done
 
 COMMITS_TEMPLATE="$HOME/COMMITS.md"
+MODEL="${AICOMMIT_MODEL:-openai/gpt-5.3-codex}"
 
 # Check if we're in a git repository
 if ! git rev-parse --is-inside-work-tree &>/dev/null; then
@@ -54,7 +55,7 @@ $DIFF
 
 Output ONLY the commit message, nothing else. No explanations, no markdown formatting, no code blocks."
 
-COMMIT_MSG=$(opencode run "$PROMPT" 2>/dev/null)
+COMMIT_MSG=$(opencode run -m "$MODEL" "$PROMPT" 2>/dev/null)
 
 if [[ -z "$COMMIT_MSG" ]]; then
     echo "Error: Failed to generate commit message" >&2
