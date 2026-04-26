@@ -24,7 +24,7 @@ Automatically generates conventional commit messages based on your staged change
 
 3. (Optional) Create a commit message template at `~/COMMITS.md` to customize the format. See [COMMITS.md.example](COMMITS.md.example) for a conventional commits template.
 
-4. (Optional) Override the default model (`openai/gpt-5.3-codex`):
+4. (Optional) Override the default model (`openai/gpt-5.5`):
    ```bash
    export AICOMMIT_MODEL="anthropic/claude-sonnet-4"
    ```
@@ -61,7 +61,7 @@ git add --all && aicommit && git push
 
 Create `~/COMMITS.md` with your preferred commit message format and guidelines. The script will include this template in the prompt to the AI.
 
-The script uses `openai/gpt-5.3-codex` by default. To use a different model, set `AICOMMIT_MODEL`.
+The script uses `openai/gpt-5.5` by default. To use a different model, set `AICOMMIT_MODEL`.
 
 Example for conventional commits - see [COMMITS.md.example](COMMITS.md.example).
 
