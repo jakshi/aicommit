@@ -20,7 +20,7 @@ for arg in "$@"; do
 done
 
 COMMITS_TEMPLATE="$HOME/COMMITS.md"
-MODEL="${AICOMMIT_MODEL:-openai/gpt-5.5}"
+MODEL="${AICOMMIT_MODEL:-openai/gpt-5.6-luna}"
 
 # Check if we're in a git repository
 if ! git rev-parse --is-inside-work-tree &>/dev/null; then
