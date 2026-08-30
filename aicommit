@@ -36,7 +36,10 @@ if git diff --cached --quiet; then
 fi
 
 # Get the staged diff
-DIFF=$(git diff --cached --stat && echo "---" && git diff --cached)
+if ! DIFF=$(git diff --cached --stat && echo "---" && git diff --cached); then
+    echo "Error: Failed to read staged diff" >&2
+    exit 1
+fi
 
 # Read commit template if exists
 TEMPLATE=""
@@ -55,7 +58,10 @@ $DIFF
 
 Output ONLY the commit message, nothing else. No explanations, no markdown formatting, no code blocks."
 
-COMMIT_MSG=$(opencode run -m "$MODEL" "$PROMPT" 2>/dev/null)
+if ! COMMIT_MSG=$(opencode run -m "$MODEL" "$PROMPT"); then
+    echo "Error: opencode failed to generate commit message" >&2
+    exit 1
+fi
 
 if [[ -z "$COMMIT_MSG" ]]; then
     echo "Error: Failed to generate commit message" >&2
